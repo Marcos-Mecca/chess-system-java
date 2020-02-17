@@ -10,7 +10,6 @@ public class Piece {
 		this.board = board;
 	}
 
-
 	protected Board getBoard() {
 		return board;
 	}
