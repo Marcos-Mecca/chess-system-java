@@ -1,20 +1,40 @@
 package application;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import boardgame.position;
+import chess.ChessException;
 import chess.ChessMatch;
+import chess.ChessPosition;
 
 public class program {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		ChessMatch chessmatch = new ChessMatch();
+		ChessMatch chessMatch = new ChessMatch();
 		
-		UI.printBoard(chessmatch.getPieces());
-		
-		sc.close();
+		while(true) {
+			try{
+				UI.clearScreen();
+				UI.printBoard(chessMatch.getPieces());
+				System.out.println();
+				System.out.println("Source: ");
+				ChessPosition source = UI.readChessPosition(sc);
+				
+				System.out.println();
+				System.out.println("Target: ");
+				ChessPosition target = UI.readChessPosition(sc);
+			}
+			catch(ChessException e) {
+				System.out.println(e.getMessage());
+				sc.nextLine();
+			}
+			catch(InputMismatchException e) {
+				System.out.println(e.getMessage());
+				sc.nextLine();
+			}
+		}
 
 	}
 
