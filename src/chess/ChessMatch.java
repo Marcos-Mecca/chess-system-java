@@ -39,7 +39,7 @@ public class ChessMatch {
 	}
 	
 	public boolean getCheck() {
-		
+		return check;
 	}
 	
 	public ChessPiece[][] getPieces(){
@@ -95,7 +95,7 @@ public class ChessMatch {
 		if(capturedPiece != null) {
 			board.placePiece(capturedPiece, target);
 			capturedPieces.remove(capturedPiece);
-			piecesOnTheBoard.add(capturedPiece);
+			piecesOnTheBoard.add((ChessPiece) capturedPiece);
 		}
 	}
 	
